@@ -1,5 +1,6 @@
 package com.yash.recyclervieweditdelete.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ class UserAdapter(val context: Context,val userList: ArrayList<com.yash.recycler
 
         var name:TextView
         var mbNum:TextView
-        var mMenus: ImageView
+        private var mMenus: ImageView
 
         init {
             name = itemView.findViewById(R.id.mTitle)
@@ -24,6 +25,7 @@ class UserAdapter(val context: Context,val userList: ArrayList<com.yash.recycler
             mMenus.setOnClickListener { popupMenus(it) }
         }
 
+        @SuppressLint("NotifyDataSetChanged", "DiscouragedPrivateApi")
         private fun popupMenus(view: View?) {
 
             val position = userList[adapterPosition]
