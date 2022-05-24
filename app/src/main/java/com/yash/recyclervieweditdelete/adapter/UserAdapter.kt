@@ -29,6 +29,10 @@ class UserAdapter(val context: Context,val userList: ArrayList<com.yash.recycler
         private fun popupMenus(view: View?) {
 
             val position = userList[adapterPosition]
+
+            // tag for get data
+            mMenus.tag = position
+
             val popupMenus = PopupMenu(context,view)
             popupMenus.inflate(R.menu.show_menu)
             popupMenus.setOnMenuItemClickListener {
@@ -37,6 +41,11 @@ class UserAdapter(val context: Context,val userList: ArrayList<com.yash.recycler
                         val v = LayoutInflater.from(context).inflate(R.layout.add_item,null)
                         val name = v.findViewById<EditText>(R.id.userName)
                         val number = v.findViewById<EditText>(R.id.userNo)
+
+                        // current Data set in dialog edit text box
+                        name.setText(position.userName)
+                        number.setText(position.userMb)
+
                         AlertDialog.Builder(context)
                             .setView(v)
                             .setPositiveButton("ok"){
